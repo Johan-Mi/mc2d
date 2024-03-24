@@ -1,5 +1,1 @@
-sprite Stage {
-    costumes {
-        "sky": "assets/sky.svg",
-    }
-}
+import "textures.sc2"

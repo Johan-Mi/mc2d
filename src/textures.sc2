@@ -1,0 +1,15 @@
+sprite Stage {
+    costumes {
+        "sky": "assets/sky.svg",
+    }
+}
+
+sprite Main {
+    costumes {
+        "1": "assets/blank.svg",
+        "2": "assets/block/grass_block_side.png",
+        "3": "assets/block/dirt.png",
+        "4": "assets/block/stone.png",
+        "5": "assets/block/cobblestone.png",
+    }
+}
