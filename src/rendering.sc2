@@ -12,7 +12,10 @@ sprite Main {
         for y world-height() {
             for x world-width() {
                 set-costume(to: tile-at(x: x, y: y))
-                go-to(x: x * tile-size, y: y * tile-size)
+                go-to(
+                    x: (x - cam-x()) * tile-size,
+                    y: (y - cam-y()) * tile-size,
+                )
                 stamp()
             }
         }

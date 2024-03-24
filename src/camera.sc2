@@ -1,0 +1,17 @@
+sprite Main {
+    let cam-x = 0
+    let cam-y = 0
+
+    fn reposition-camera() {
+        &cam-x = 0
+        &cam-y = 0
+    }
+
+    inline fn cam-x() -> Num {
+        cam-x
+    }
+
+    inline fn cam-y() -> Num {
+        cam-y
+    }
+}
