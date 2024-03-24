@@ -1,0 +1,23 @@
+let scale = 200
+let tile-size = 16
+
+sprite Main {
+    fn initialize-renderer() {
+        hide()
+        erase-all()
+        set-size(to: scale)
+    }
+
+    fn render() {
+        set-costume(to: 3)
+        for y 8 {
+            if y == 8 {
+                set-costume(to: 2)
+            }
+            for x 8 {
+                go-to(x: x * tile-size, y: y * tile-size)
+                stamp()
+            }
+        }
+    }
+}

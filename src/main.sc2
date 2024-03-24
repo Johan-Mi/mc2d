@@ -1,1 +1,9 @@
+import "rendering.sc2"
 import "textures.sc2"
+
+sprite Main {
+    fn when-flag-clicked() {
+        initialize-renderer()
+        render()
+    }
+}
