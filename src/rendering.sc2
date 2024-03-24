@@ -9,12 +9,9 @@ sprite Main {
     }
 
     fn render() {
-        set-costume(to: 3)
-        for y 8 {
-            if y == 8 {
-                set-costume(to: 2)
-            }
-            for x 8 {
+        for y world-height() {
+            for x world-width() {
+                set-costume(to: tile-at(x: x, y: y))
                 go-to(x: x * tile-size, y: y * tile-size)
                 stamp()
             }

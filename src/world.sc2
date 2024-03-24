@@ -1,0 +1,30 @@
+# World coordinates go from left to right, bottom to top
+# and use one-based indexing.
+
+sprite Main {
+    let world-width = 8
+    let world-height = 8
+    let tiles = [] as List[Num]
+
+    fn create-world() {
+        repeat world-width * (world-height - 1) {
+            tiles.push(3) # Dirt
+        }
+        repeat world-width {
+            tiles.push(2) # Grass layer on top
+        }
+    }
+
+    inline fn world-width() -> Num {
+        world-width
+    }
+
+    inline fn world-height() -> Num {
+        world-height
+    }
+
+    # This is not bounds-checked.
+    inline fn tile-at(x x: Num, y y: Num) -> Num {
+        tiles.at((y - 1) * world-width + x)
+    }
+}
