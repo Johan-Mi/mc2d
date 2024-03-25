@@ -1,0 +1,13 @@
+sprite Main {
+    inline fn screen-width() -> Num {
+        480
+    }
+
+    inline fn screen-height() -> Num {
+        360
+    }
+
+    inline fn tile-size() -> Num {
+        16
+    }
+}

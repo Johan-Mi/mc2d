@@ -1,4 +1,5 @@
 import "camera.sc2"
+import "constants.sc2"
 import "rendering.sc2"
 import "textures.sc2"
 import "world.sc2"

@@ -35,6 +35,14 @@ sprite Main {
         if cam-y < 0 {
             &cam-y = 0
         }
+        let max-cam-x = world-width() - screen-width() / tile-size()
+        if cam-x > max-cam-x {
+            &cam-x = max-cam-x
+        }
+        let max-cam-y = world-height() - screen-height() / tile-size()
+        if cam-y > max-cam-y {
+            &cam-y = max-cam-y
+        }
     }
 
     inline fn cam-x() -> Num {
