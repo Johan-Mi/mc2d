@@ -8,11 +8,8 @@ sprite Main {
 
     fn create-world() {
         tiles.delete-all()
-        repeat world-width * (world-height - 1) {
-            tiles.push(3) # Dirt
-        }
-        repeat world-width {
-            tiles.push(2) # Grass layer on top
+        repeat world-width * world-height {
+            tiles.push(random(between: 1, and: 5))
         }
     }
 
