@@ -13,11 +13,14 @@ sprite Main {
         erase-all()
         for y world-height() {
             for x world-width() {
-                set-costume(to: tile-at(x: x, y: y))
+                # This costume is larger than the other tiles, which lets the
+                # sprite go off-screen.
+                set-costume(to: 1)
                 go-to(
                     x: (x - cam-x()) * tile-size + origin-x,
                     y: (y - cam-y()) * tile-size + origin-y,
                 )
+                set-costume(to: tile-at(x: x, y: y))
                 stamp()
             }
         }
