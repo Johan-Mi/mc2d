@@ -4,11 +4,11 @@ let tile-size = 16
 sprite Main {
     fn initialize-renderer() {
         hide()
-        erase-all()
         set-size(to: scale)
     }
 
     fn render() {
+        erase-all()
         for y world-height() {
             for x world-width() {
                 set-costume(to: tile-at(x: x, y: y))
