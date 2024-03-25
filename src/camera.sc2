@@ -9,6 +9,11 @@ sprite Main {
     }
 
     fn update-camera(_ Δt: Num) {
+        pan(Δt)
+        clamp()
+    }
+
+    inline fn pan(_ Δt: Num) {
         if pressing-key("w") {
             &cam-y = cam-y + pan-speed * Δt
         }
@@ -20,6 +25,15 @@ sprite Main {
         }
         if pressing-key("a") {
             &cam-x = cam-x - pan-speed * Δt
+        }
+    }
+
+    inline fn clamp() {
+        if cam-x < 0 {
+            &cam-x = 0
+        }
+        if cam-y < 0 {
+            &cam-y = 0
         }
     }
 
