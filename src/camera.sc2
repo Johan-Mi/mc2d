@@ -7,8 +7,8 @@ sprite Main {
         &cam-y = 0
     }
 
-    fn update-camera() {
-        &cam-x = cam-x + 0.1
+    fn update-camera(_ Δt: Num) {
+        &cam-x = cam-x + 2 * Δt
     }
 
     inline fn cam-x() -> Num {
