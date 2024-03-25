@@ -1,5 +1,7 @@
 let scale = 200
 let tile-size = 16
+let origin-x = -248
+let origin-y = -188
 
 sprite Main {
     fn initialize-renderer() {
@@ -13,8 +15,8 @@ sprite Main {
             for x world-width() {
                 set-costume(to: tile-at(x: x, y: y))
                 go-to(
-                    x: (x - cam-x()) * tile-size,
-                    y: (y - cam-y()) * tile-size,
+                    x: (x - cam-x()) * tile-size + origin-x,
+                    y: (y - cam-y()) * tile-size + origin-y,
                 )
                 stamp()
             }
