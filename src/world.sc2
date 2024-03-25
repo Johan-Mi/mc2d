@@ -2,8 +2,8 @@
 # and use one-based indexing.
 
 sprite Main {
-    let world-width = 8
-    let world-height = 8
+    let world-width = 64
+    let world-height = 48
     let tiles = [] as List[Num]
 
     fn create-world() {

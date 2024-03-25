@@ -2,6 +2,9 @@ let scale = 200
 let tile-size = 16
 let origin-x = -248
 let origin-y = -188
+let screen-tile-width = 30
+# Actually it's 22.5 but we can't render half a tile.
+let screen-tile-height = 23
 
 sprite Main {
     fn initialize-renderer() {
@@ -11,16 +14,22 @@ sprite Main {
 
     fn render() {
         erase-all()
-        for y world-height() {
-            for x world-width() {
+        let x-nudge = cam-x() % 1
+        let y-nudge = cam-y() % 1
+        # There may be an extra tile visible due to panning.
+        for y screen-tile-height + 1 {
+            for x screen-tile-width + 1 {
                 # This costume is larger than the other tiles, which lets the
                 # sprite go off-screen.
                 set-costume(to: 1)
                 go-to(
-                    x: (x - cam-x()) * tile-size + origin-x,
-                    y: (y - cam-y()) * tile-size + origin-y,
+                    x: (x - x-nudge) * tile-size + origin-x,
+                    y: (y - y-nudge) * tile-size + origin-y,
                 )
-                set-costume(to: tile-at(x: x, y: y))
+                set-costume(to: tile-at(
+                        x: x + floor(cam-x()),
+                        y: y + floor(cam-y()),
+                    ))
                 stamp()
             }
         }
