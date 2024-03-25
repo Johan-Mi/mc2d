@@ -2,9 +2,13 @@ sprite Main {
     let cam-x = 0
     let cam-y = 0
 
-    fn reposition-camera() {
+    fn initialize-camera() {
         &cam-x = 0
         &cam-y = 0
+    }
+
+    fn update-camera() {
+        &cam-x = cam-x + 0.1
     }
 
     inline fn cam-x() -> Num {

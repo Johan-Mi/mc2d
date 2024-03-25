@@ -3,11 +3,19 @@ import "rendering.sc2"
 import "textures.sc2"
 import "world.sc2"
 
+let target-fps = 30
+
 sprite Main {
     fn when-flag-clicked() {
         initialize-renderer()
         create-world()
-        reposition-camera()
-        render()
+        initialize-camera()
+        forever {
+            let before = timer()
+            update-camera()
+            render()
+            let elapsed = timer() - before
+            wait(seconds: 1 / target-fps - elapsed)
+        }
     }
 }
