@@ -9,14 +9,61 @@ sprite Hotbar {
     }
 }
 
+let selected-hotbar-slot = 1
+
+inline fn selected-hotbar-slot() -> Num {
+    selected-hotbar-slot
+}
+
 sprite HotbarSelection {
     costumes {
         "hotbar": "assets/resource-pack/assets/minecraft/textures/gui/sprites/hud/hotbar_selection.png",
     }
 
     fn when-flag-clicked() {
-        go-to(x: 0, y: -160)
+        select(slot: 1)
         set-size(to: 300)
         go-to-front-layer()
+    }
+
+    inline fn select(slot slot: Num) {
+        &selected-hotbar-slot = slot
+        go-to(x: slot * 30 - 150, y: -160)
+    }
+
+    fn when-1-key-pressed() {
+        select(slot: 1)
+    }
+
+    fn when-2-key-pressed() {
+        select(slot: 2)
+    }
+
+    fn when-3-key-pressed() {
+        select(slot: 3)
+    }
+
+    fn when-4-key-pressed() {
+        select(slot: 4)
+    }
+
+    fn when-5-key-pressed() {
+        select(slot: 5)
+    }
+
+    fn when-6-key-pressed() {
+        select(slot: 6)
+    }
+
+    fn when-7-key-pressed() {
+        select(slot: 7)
+    }
+
+    fn when-8-key-pressed() {
+        select(slot: 8)
+    }
+
+    fn when-9-key-pressed() {
+        select(slot: 9)
     }
 }
