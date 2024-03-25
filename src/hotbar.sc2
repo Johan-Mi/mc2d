@@ -1,0 +1,10 @@
+sprite Hotbar {
+    costumes {
+        "hotbar": "assets/resource-pack/assets/minecraft/textures/gui/sprites/hud/hotbar.png",
+    }
+
+    fn when-flag-clicked() {
+        go-to(x: 0, y: -160)
+        set-size(to: 300)
+    }
+}
