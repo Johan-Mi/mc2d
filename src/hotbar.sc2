@@ -3,7 +3,7 @@ sprite Hotbar {
         "hotbar": "assets/resource-pack/assets/minecraft/textures/gui/sprites/hud/hotbar.png",
     }
 
-    fn when-flag-clicked() {
+    fn when-flag-clicked {
         go-to(x: 0, y: -160)
         set-size(to: 300)
     }
@@ -11,7 +11,7 @@ sprite Hotbar {
 
 let selected-hotbar-slot = 1
 
-inline fn selected-hotbar-slot() -> Num {
+inline fn selected-hotbar-slot -> Num {
     selected-hotbar-slot
 }
 
@@ -20,7 +20,7 @@ sprite HotbarSelection {
         "hotbar": "assets/resource-pack/assets/minecraft/textures/gui/sprites/hud/hotbar_selection.png",
     }
 
-    fn when-flag-clicked() {
+    fn when-flag-clicked {
         select(slot: 1)
         set-size(to: 300)
         go-to-front-layer()
@@ -31,39 +31,39 @@ sprite HotbarSelection {
         go-to(x: slot * 30 - 150, y: -160)
     }
 
-    fn when-key-pressed "1"() {
+    fn when-key-pressed "1" {
         select(slot: 1)
     }
 
-    fn when-key-pressed "2"() {
+    fn when-key-pressed "2" {
         select(slot: 2)
     }
 
-    fn when-key-pressed "3"() {
+    fn when-key-pressed "3" {
         select(slot: 3)
     }
 
-    fn when-key-pressed "4"() {
+    fn when-key-pressed "4" {
         select(slot: 4)
     }
 
-    fn when-key-pressed "5"() {
+    fn when-key-pressed "5" {
         select(slot: 5)
     }
 
-    fn when-key-pressed "6"() {
+    fn when-key-pressed "6" {
         select(slot: 6)
     }
 
-    fn when-key-pressed "7"() {
+    fn when-key-pressed "7" {
         select(slot: 7)
     }
 
-    fn when-key-pressed "8"() {
+    fn when-key-pressed "8" {
         select(slot: 8)
     }
 
-    fn when-key-pressed "9"() {
+    fn when-key-pressed "9" {
         select(slot: 9)
     }
 }

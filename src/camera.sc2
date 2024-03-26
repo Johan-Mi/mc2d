@@ -3,7 +3,7 @@ sprite Main {
     let cam-y = 0
     let pan-speed = 10
 
-    fn initialize-camera() {
+    fn initialize-camera {
         &cam-x = 0
         &cam-y = 0
     }
@@ -28,7 +28,7 @@ sprite Main {
         }
     }
 
-    inline fn clamp() {
+    inline fn clamp {
         if cam-x < 0 {
             &cam-x = 0
         }
@@ -45,11 +45,11 @@ sprite Main {
         }
     }
 
-    inline fn cam-x() -> Num {
+    inline fn cam-x -> Num {
         cam-x
     }
 
-    inline fn cam-y() -> Num {
+    inline fn cam-y -> Num {
         cam-y
     }
 }

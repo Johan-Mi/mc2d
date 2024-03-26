@@ -6,18 +6,18 @@ sprite Main {
     let world-height = 48
     let tiles = [] as List[Num]
 
-    fn create-world() {
+    fn create-world {
         tiles.delete-all()
         repeat world-width * world-height {
             tiles.push(random(between: 1, and: 5))
         }
     }
 
-    inline fn world-width() -> Num {
+    inline fn world-width -> Num {
         world-width
     }
 
-    inline fn world-height() -> Num {
+    inline fn world-height -> Num {
         world-height
     }
 

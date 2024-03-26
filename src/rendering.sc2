@@ -6,12 +6,12 @@ let screen-tile-width = 30
 let screen-tile-height = 23
 
 sprite Main {
-    fn initialize-renderer() {
+    fn initialize-renderer {
         hide()
         set-size(to: scale)
     }
 
-    fn render() {
+    fn render {
         erase-all()
         let x-nudge = cam-x() % 1
         let y-nudge = cam-y() % 1
