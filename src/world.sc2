@@ -38,13 +38,14 @@ sprite Main {
         for x world-width {
             let ground = random(within: y-variation, of: mean-ground-level)
             let dirt-depth = random(between: 1, and: 4)
-            for y ground - dirt-depth {
-                set-tile-at(x: x, y: y, to: 4)
+            for y ground - dirt-depth - 1 {
+                set-tile-at(x: x, y: y + 1, to: 4)
             }
             for y dirt-depth {
                 set-tile-at(x: x, y: ground - y, to: 3)
             }
             set-tile-at(x: x, y: ground, to: 2)
+            set-tile-at(x: x, y: 1, to: 5)
         }
     }
 }

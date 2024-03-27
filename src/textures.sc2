@@ -10,6 +10,7 @@ sprite Main {
         "2": "assets/block/grass_block_side.png",
         "3": "assets/block/dirt.png",
         "4": "assets/block/stone.png",
-        "5": "assets/block/cobblestone.png",
+        "5": "assets/block/bedrock.png",
+        "6": "assets/block/cobblestone.png",
     }
 }
