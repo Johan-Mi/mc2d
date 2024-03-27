@@ -40,6 +40,7 @@ sprite Main {
             for y ground {
                 set-tile-at(x: x, y: y, to: 4)
             }
+            set-tile-at(x: x, y: ground + 1, to: 2)
         }
     }
 }
