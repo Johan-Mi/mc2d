@@ -47,6 +47,16 @@ sprite Main {
             set-tile-at(x: x, y: ground, to: 2)
             set-tile-at(x: x, y: 1, to: 5)
         }
+
+        # TODO: place clusters instead of single tiles
+        let ore-clusters = world-width * 0.5
+        repeat ore-clusters {
+            let x = random(between: 1, and: world-width)
+            let y = random(between: 1, and: mean-ground-level)
+            if tile-at(x: x, y: y) == 4 {
+                set-tile-at(x: x, y: y, to: 7)
+            }
+        }
     }
 }
 
