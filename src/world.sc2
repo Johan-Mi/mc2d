@@ -23,6 +23,6 @@ sprite Main {
 
     # This is not bounds-checked.
     inline fn tile-at(x x: Num, y y: Num) -> Num {
-        tiles.at((y - 1) * world-width + x)
+        tiles.at((x - 1) * world-height + y)
     }
 }
