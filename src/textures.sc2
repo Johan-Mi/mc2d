@@ -13,5 +13,8 @@ sprite Main {
         "5": "assets/block/bedrock.png",
         "6": "assets/block/cobblestone.png",
         "7": "assets/block/coal_ore.png",
+        "8": "assets/block/iron_ore.png",
+        "9": "assets/block/gold_ore.png",
+        "10": "assets/block/diamond_ore.png",
     }
 }
