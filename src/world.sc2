@@ -6,13 +6,6 @@ sprite Main {
     let world-height = 48
     let tiles = [] as List[Num]
 
-    fn create-world {
-        tiles.delete-all()
-        repeat world-width * world-height {
-            tiles.push(random(between: 1, and: 5))
-        }
-    }
-
     inline fn world-width -> Num {
         world-width
     }
@@ -22,7 +15,35 @@ sprite Main {
     }
 
     # This is not bounds-checked.
-    inline fn tile-at(x x: Num, y y: Num) -> Num {
-        tiles.at((x - 1) * world-height + y)
+    inline fn index-for-tile-at(x x: Num, y y: Num) -> Num {
+        (x - 1) * world-height + y
     }
+
+    inline fn tile-at(x x: Num, y y: Num) -> Num {
+        tiles.at(index-for-tile-at(x: x, y: y))
+    }
+
+    inline fn set-tile-at(x x: Num, y y: Num, to tile: Num) {
+        tiles.replace(index: index-for-tile-at(x: x, y: y), with: tile)
+    }
+
+    fn create-world {
+        let mean-ground-level = world-height / 2
+        let y-variation = 6
+
+        tiles.delete-all()
+        repeat world-width * world-height {
+            tiles.push(1)
+        }
+        for x world-width {
+            let ground = random(within: y-variation, of: mean-ground-level)
+            for y ground {
+                set-tile-at(x: x, y: y, to: 4)
+            }
+        }
+    }
+}
+
+inline fn random(within variation: Num, of mean: Num) -> Num {
+    random(between: mean - variation, and: mean + variation)
 }
