@@ -27,6 +27,10 @@ sprite Main {
         tiles.replace(index: index-for-tile-at(x: x, y: y), with: tile)
     }
 
+    inline fn is-in-bounds(x x: Num, y y: Num) -> Bool {
+        not((x < 1).or(x > world-width).or(y < 1).or(y > world-height))
+    }
+
     fn create-world {
         let mean-ground-level = world-height / 2
         let y-variation = 6
@@ -48,14 +52,15 @@ sprite Main {
             set-tile-at(x: x, y: 1, to: 5)
         }
 
-        # TODO: place clusters instead of single tiles
         let ore-clusters = world-width * 0.5
         repeat ore-clusters {
             let kind = random(between: 7, and: 10)
             let x = random(between: 1, and: world-width)
             let y = random(between: 1, and: mean-ground-level)
-            if tile-at(x: x, y: y) == 4 {
+            while is-in-bounds(x: x, y: y).and(tile-at(x: x, y: y) == 4) {
                 set-tile-at(x: x, y: y, to: kind)
+                &x = x + random(within: 2, of: 0)
+                &y = y + random(within: 1, of: 0)
             }
         }
     }
