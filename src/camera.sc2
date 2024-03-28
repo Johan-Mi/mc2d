@@ -1,7 +1,7 @@
 sprite Main {
     let cam-x = 0
     let cam-y = 0
-    let pan-speed = 10
+    let pan-speed = 30
 
     fn initialize-camera {
         &cam-x = 0
