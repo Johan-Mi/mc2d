@@ -6,6 +6,9 @@ sprite Main {
     let world-height = 128
     let tiles = [] as List[Num]
 
+    let mean-ground-level = 64
+    let y-variation = 6
+
     inline fn world-width -> Num {
         world-width
     }
@@ -32,13 +35,17 @@ sprite Main {
     }
 
     fn create-world {
-        let mean-ground-level = world-height / 2
-        let y-variation = 6
-
         tiles.delete-all()
         repeat world-width * world-height {
             tiles.push(1)
         }
+        create-basic-terrain()
+        repeat world-width * 0.5 {
+            create-ore-cluster()
+        }
+    }
+
+    inline fn create-basic-terrain {
         for x world-width {
             let ground = random(within: y-variation, of: mean-ground-level)
             let dirt-depth = random(between: 1, and: 4)
@@ -58,17 +65,16 @@ sprite Main {
                 )
             }
         }
+    }
 
-        let ore-clusters = world-width * 0.5
-        repeat ore-clusters {
-            let kind = random(between: 7, and: 10)
-            let x = random(between: 1, and: world-width)
-            let y = random(between: 1, and: mean-ground-level)
-            while is-in-bounds(x: x, y: y).and(tile-at(x: x, y: y) == 4) {
-                set-tile-at(x: x, y: y, to: kind)
-                &x = x + random(within: 2, of: 0)
-                &y = y + random(within: 1, of: 0)
-            }
+    inline fn create-ore-cluster {
+        let kind = random(between: 7, and: 10)
+        let x = random(between: 1, and: world-width)
+        let y = random(between: 1, and: mean-ground-level)
+        while is-in-bounds(x: x, y: y).and(tile-at(x: x, y: y) == 4) {
+            set-tile-at(x: x, y: y, to: kind)
+            &x = x + random(within: 2, of: 0)
+            &y = y + random(within: 1, of: 0)
         }
     }
 }
