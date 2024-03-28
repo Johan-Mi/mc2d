@@ -50,6 +50,13 @@ sprite Main {
             }
             set-tile-at(x: x, y: ground, to: 2)
             set-tile-at(x: x, y: 1, to: 5)
+            if random(between: 0, and: 6) == 0 {
+                set-tile-at(
+                    x: x,
+                    y: ground + 1,
+                    to: random(between: 11, and: 12),
+                )
+            }
         }
 
         let ore-clusters = world-width * 0.5

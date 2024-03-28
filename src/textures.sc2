@@ -16,5 +16,7 @@ sprite Main {
         "8": "assets/block/iron_ore.png",
         "9": "assets/block/gold_ore.png",
         "10": "assets/block/diamond_ore.png",
+        "11": "assets/block/dandelion.png",
+        "12": "assets/block/poppy.png",
     }
 }
