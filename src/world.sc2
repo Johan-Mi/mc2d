@@ -42,8 +42,14 @@ sprite Main {
     }
 
     inline fn create-basic-terrain {
+        let ground = mean-ground-level
         for x world-width {
-            let ground = random(within: y-variation, of: mean-ground-level)
+            &ground = ground + random(within: 2, of: 0)
+            if ground < mean-ground-level - y-variation {
+                &ground = mean-ground-level - y-variation
+            } else if ground > mean-ground-level + y-variation {
+                &ground = mean-ground-level + y-variation
+            }
             let dirt-depth = random(between: 1, and: 4)
             for y ground - dirt-depth - 1 {
                 set-tile-at(x: x, y: y + 1, to: 4)
