@@ -3,6 +3,18 @@ sprite Main {
     let cam-y = 0
     let pan-speed = 30
 
+    inline fn screen-width -> Num {
+        480
+    }
+
+    inline fn screen-height -> Num {
+        360
+    }
+
+    inline fn tile-size -> Num {
+        16
+    }
+
     fn initialize-camera {
         &cam-x = 0
         &cam-y = 0
