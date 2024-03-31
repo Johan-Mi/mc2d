@@ -5,7 +5,6 @@ let origin-y = -180
 sprite Main {
     fn initialize-renderer {
         hide()
-        set-size(to: scale)
     }
 
     fn render {
