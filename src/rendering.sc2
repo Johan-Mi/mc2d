@@ -10,6 +10,7 @@ sprite Main {
 
     fn render {
         erase-all()
+        set-size(to: tile-size() * (scale / 16))
         let x-nudge = cam-x() % 1
         let y-nudge = cam-y() % 1
         # There may be an extra tile visible due to panning.

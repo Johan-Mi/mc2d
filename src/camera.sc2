@@ -1,7 +1,9 @@
 sprite Main {
     let cam-x = 0
     let cam-y = 0
+    let tile-size = 16
     let pan-speed = 30
+    let zoom-speed = 20
 
     inline fn screen-width -> Num {
         480
@@ -12,16 +14,18 @@ sprite Main {
     }
 
     inline fn tile-size -> Num {
-        16
+        tile-size
     }
 
     fn initialize-camera {
         &cam-x = 0
         &cam-y = 0
+        &tile-size = 16
     }
 
     fn update-camera(_ Δt: Num) {
         pan(Δt)
+        zoom(Δt)
         clamp()
     }
 
@@ -38,6 +42,22 @@ sprite Main {
         if pressing-key("a") {
             &cam-x = cam-x - pan-speed * Δt
         }
+    }
+
+    inline fn zoom(_ Δt: Num) {
+        if pressing-key("+") {
+            &tile-size = tile-size + zoom-speed * Δt
+        }
+        if pressing-key("-") {
+            &tile-size = tile-size - zoom-speed * Δt
+        }
+        if tile-size < 4 {
+            &tile-size = 4
+        }
+    }
+
+    fn when-key-pressed "0" {
+        &tile-size = 16
     }
 
     inline fn clamp {
