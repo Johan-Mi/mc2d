@@ -43,6 +43,7 @@ sprite Main {
 
     inline fn create-basic-terrain {
         let ground = mean-ground-level
+        let tree-distance = 0
         for x world-width {
             &ground = ground + random(within: 2, of: 0)
             if ground < mean-ground-level - y-variation {
@@ -59,12 +60,18 @@ sprite Main {
             }
             set-tile-at(x: x, y: ground, to: 2)
             set-tile-at(x: x, y: 1, to: 5)
-            if random(between: 0, and: 6) == 0 {
-                set-tile-at(
-                    x: x,
-                    y: ground + 1,
-                    to: random(between: 11, and: 12),
-                )
+            if (tree-distance > 4).and(random(between: 0, and: 4) == 0) {
+                create-tree-at(x: x, y: ground)
+                &tree-distance = 0
+            } else {
+                &tree-distance = tree-distance + 1
+                if random(between: 0, and: 6) == 0 {
+                    set-tile-at(
+                        x: x,
+                        y: ground + 1,
+                        to: random(between: 11, and: 12),
+                    )
+                }
             }
         }
     }
@@ -82,6 +89,30 @@ sprite Main {
             &x = x + random(within: 2, of: 0)
             &y = y + random(within: 1, of: 0)
         }
+    }
+
+    fn create-tree-at(x x: Num, y y: Num) {
+        let log = 13
+        let leaves = 14
+        let height = random(between: 3, and: 5)
+        for i height {
+            set-tile-at(x: x, y: y + i, to: log)
+        }
+        let y = y + height
+        set-tile-at(x: x - 2, y: y - 1, to: leaves)
+        set-tile-at(x: x - 2, y: y, to: leaves)
+        set-tile-at(x: x - 1, y: y - 1, to: leaves)
+        set-tile-at(x: x - 1, y: y, to: leaves)
+        set-tile-at(x: x - 1, y: y + 1, to: leaves)
+        set-tile-at(x: x - 1, y: y + 2, to: leaves)
+        set-tile-at(x: x, y: y + 1, to: leaves)
+        set-tile-at(x: x, y: y + 2, to: leaves)
+        set-tile-at(x: x + 1, y: y - 1, to: leaves)
+        set-tile-at(x: x + 1, y: y, to: leaves)
+        set-tile-at(x: x + 1, y: y + 1, to: leaves)
+        set-tile-at(x: x + 1, y: y + 2, to: leaves)
+        set-tile-at(x: x + 2, y: y - 1, to: leaves)
+        set-tile-at(x: x + 2, y: y, to: leaves)
     }
 }
 

@@ -11,5 +11,6 @@ Lifelong Kindergarten Group at the MIT Media Lab. It is available for free at
 ## Build instructions
 
 - Install [the compiler](https://github.com/Johan-Mi/scratch-compiler-2).
+- Install ImageMagick.
 - Acquire the default resource pack and extract it to `assets/resource-pack`.
 - Run `make`.

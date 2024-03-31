@@ -18,5 +18,7 @@ sprite Main {
         "10": "assets/block/diamond_ore.png",
         "11": "assets/block/dandelion.png",
         "12": "assets/block/poppy.png",
+        "13": "assets/block/oak_log.png",
+        "14": "assets/build/oak_leaves.png",
     }
 }
