@@ -42,15 +42,18 @@ sprite Main {
     }
 
     inline fn create-basic-terrain {
-        let ground = mean-ground-level
+        let noise-scale = 8
+        let rand = [] as List[Num]
+        repeat ceil(world-width / noise-scale) + 1 {
+            rand.push(random(within: y-variation, of: mean-ground-level))
+        }
+
         let tree-distance = 0
         for x world-width {
-            &ground = ground + random(within: 2, of: 0)
-            if ground < mean-ground-level - y-variation {
-                &ground = mean-ground-level - y-variation
-            } else if ground > mean-ground-level + y-variation {
-                &ground = mean-ground-level + y-variation
-            }
+            let p0 = rand.at(floor(x / noise-scale) + 1)
+            let p1 = rand.at(floor(x / noise-scale) + 2)
+            let ground = lerp(p0, p1, at: (x / noise-scale) % 1)
+
             let dirt-depth = random(between: 1, and: 4)
             for y ground - dirt-depth - 1 {
                 set-tile-at(x: x, y: y + 1, to: 4)
@@ -118,4 +121,8 @@ sprite Main {
 
 inline fn random(within variation: Num, of mean: Num) -> Num {
     random(between: mean - variation, and: mean + variation)
+}
+
+inline fn lerp(_ a: Num, _ b: Num, at t: Num) -> Num {
+    a + (b - a) * t
 }
