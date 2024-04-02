@@ -1,6 +1,4 @@
 let scale = 200
-let origin-x = -240
-let origin-y = -180
 
 sprite Main {
     fn initialize-renderer {
@@ -19,8 +17,8 @@ sprite Main {
                 # sprite go off-screen.
                 set-costume(to: 1)
                 go-to(
-                    x: (x - x-nudge) * tile-size() + origin-x,
-                    y: (y - y-nudge) * tile-size() + origin-y,
+                    x: (x - x-nudge) * tile-size() - screen-width() * 0.5,
+                    y: (y - y-nudge) * tile-size() - screen-height() * 0.5,
                 )
                 set-costume(to: tile-at(
                         x: x + floor(cam-x()),

@@ -1,16 +1,18 @@
 sprite Main {
     let cam-x = 0
     let cam-y = 0
+    let screen-width = 0
+    let screen-height = 0
     let tile-size = 16
     let pan-speed = 30
     let zoom-speed = 20
 
     inline fn screen-width -> Num {
-        480
+        screen-width
     }
 
     inline fn screen-height -> Num {
-        360
+        screen-height
     }
 
     inline fn tile-size -> Num {
@@ -21,6 +23,15 @@ sprite Main {
         &cam-x = 0
         &cam-y = 0
         &tile-size = 16
+        detect-screen-size()
+    }
+
+    inline fn detect-screen-size {
+        set-costume(to: 2)
+        set-size(to: 200)
+        go-to(x: 320, y: 180)
+        &screen-width = 2 * x-pos()
+        &screen-height = 2 * y-pos()
     }
 
     fn update-camera(_ Δt: Num) {
