@@ -84,6 +84,9 @@ sprite Main {
         let kind = random(between: 7, and: 10)
         let x = random(between: 1, and: world-width)
         let y = random(between: 1, and: mean-ground-level)
+        if (kind == 10).and(y > 16) {
+            &kind = 7
+        }
         # Believe it or not, this does not need to be bounds-checked.
         # If `x` goes out of bounds then `tile-at` returns the empty string and
         # if `y` goes out of bounds then we get some tile above ground.
