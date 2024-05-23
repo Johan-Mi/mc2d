@@ -67,3 +67,25 @@ sprite HotbarSelection {
         select(slot: 9)
     }
 }
+
+sprite Main {
+    let this-hotbar-slot = 0
+
+    fn initialize-hotbar-content {
+        set-size(to: 200)
+        show()
+        for slot 9 {
+            go-to(x: slot * 30 - 150, y: -160)
+            &this-hotbar-slot = slot
+            set-costume(to: random(between: 1, and: 14))
+            clone-self()
+        }
+        &this-hotbar-slot = 0
+    }
+
+    fn when-key-pressed "i" {
+        if this-hotbar-slot == selected-hotbar-slot {
+            set-costume(to: random(between: 1, and: 14))
+        }
+    }
+}

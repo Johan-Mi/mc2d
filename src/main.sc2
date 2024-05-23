@@ -6,6 +6,7 @@ import "world.sc2"
 
 sprite Main {
     fn when-flag-clicked {
+        initialize-hotbar-content()
         initialize-renderer()
         create-world()
         initialize-camera()
