@@ -95,4 +95,12 @@ sprite Main {
     inline fn cam-y -> Num {
         cam-y
     }
+
+    inline fn world-x(of-screen-x x: Num) -> Num {
+        (x + screen-width / 2) / tile-size + cam-x + 1
+    }
+
+    inline fn world-y(of-screen-y y: Num) -> Num {
+        (y + screen-height / 2) / tile-size + cam-y + 1
+    }
 }

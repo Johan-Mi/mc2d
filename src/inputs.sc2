@@ -1,0 +1,8 @@
+sprite Main {
+    fn when-key-pressed "j" {
+        let x = floor(world-x(of-screen-x: mouse-x()))
+        let y = floor(world-y(of-screen-y: mouse-y()))
+        let air = 1
+        set-tile-at(x: x, y: y, to: air)
+    }
+}
