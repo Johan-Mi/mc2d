@@ -15,6 +15,12 @@ inline fn selected-hotbar-slot -> Num {
     selected-hotbar-slot
 }
 
+let hotbar-items = [] as List[Num]
+
+inline fn item-in-hotbar-slot(_ slot: Num) -> Num {
+    hotbar-items.at(slot)
+}
+
 sprite HotbarSelection {
     costumes {
         "hotbar": "assets/resource-pack/assets/minecraft/textures/gui/sprites/hud/hotbar_selection.png",
@@ -72,12 +78,15 @@ sprite Main {
     let this-hotbar-slot = 0
 
     fn initialize-hotbar-content {
+        hotbar-items.delete-all()
         set-size(to: 200)
         show()
         for slot 9 {
             go-to(x: slot * 30 - 150, y: -160)
             &this-hotbar-slot = slot
-            set-costume(to: random(between: 1, and: 14))
+            let item = random(between: 1, and: 14)
+            hotbar-items.push(item)
+            set-costume(to: item)
             clone-self()
         }
         &this-hotbar-slot = 0
@@ -85,7 +94,9 @@ sprite Main {
 
     fn when-key-pressed "i" {
         if this-hotbar-slot == selected-hotbar-slot {
-            set-costume(to: random(between: 1, and: 14))
+            let item = random(between: 1, and: 14)
+            hotbar-items.replace(index: this-hotbar-slot, with: item)
+            set-costume(to: item)
         }
     }
 }

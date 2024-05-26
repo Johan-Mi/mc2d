@@ -5,4 +5,14 @@ sprite Main {
         let air = 1
         set-tile-at(x: x, y: y, to: air)
     }
+
+    fn when-key-pressed "k" {
+        let x = floor(world-x(of-screen-x: mouse-x()))
+        let y = floor(world-y(of-screen-y: mouse-y()))
+        let air = 1
+        if tile-at(x: x, y: y) == air {
+            let tile = item-in-hotbar-slot(selected-hotbar-slot())
+            set-tile-at(x: x, y: y, to: tile)
+        }
+    }
 }
